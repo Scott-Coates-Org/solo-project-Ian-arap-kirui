@@ -9,7 +9,7 @@ export default function Sidebar() {
     <div className={styles.sidebar}>
       <div className={styles.sidebarWrapper}>
         <div className={styles.sidebarMenu}>
-          <h3 className={styles.sidebarTitle}>Dashboard</h3>
+          <h3 className={styles.sidebarTitle}>Farm Wallet</h3>
           <ul className={styles.sidebarList}>
             <Link to="/" className="link">
               <li className={styles.sidebarListItem}>
