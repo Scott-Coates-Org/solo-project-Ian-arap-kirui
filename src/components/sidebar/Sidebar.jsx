@@ -1,7 +1,7 @@
 import styles from "./sidebar.module.css";
-import DashIcon from "../../icons/sidebarIcons/HomeIcon.svg";
-import TeaIcon from "../../icons/sidebarIcons/TeaIcon.svg";
-import SettingIcon from "../../icons/sidebarIcons/SettingsIcon.svg";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import AgricultureOutlinedIcon from "@mui/icons-material/AgricultureOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
@@ -12,17 +12,19 @@ export default function Sidebar() {
           <h3 className={styles.sidebarTitle}>Farm Wallet</h3>
           <ul className={styles.sidebarList}>
             <Link to="/" className="link">
-              <li className={styles.sidebarListItem}>
-                {/* <DashIcon /> */}
+              <li className={`${styles.sidebarListItem} ${styles.active}`}>
+                <HomeOutlinedIcon className={styles.sidebarIcon} />
                 Dashboard
               </li>
             </Link>
+            <Link to="/my-farm" className="link">
+              <li className={styles.sidebarListItem}>
+                <AgricultureOutlinedIcon className={styles.sidebarIcon} />
+                My Farm
+              </li>
+            </Link>
             <li className={styles.sidebarListItem}>
-              {/* <TeaIcon /> */}
-              Tea
-            </li>
-            <li className={styles.sidebarListItem}>
-              {/* <SettingIcon /> */}
+              <SettingsOutlinedIcon className={styles.sidebarIcon} />
               Settings
             </li>
           </ul>

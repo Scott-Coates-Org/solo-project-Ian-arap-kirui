@@ -1,0 +1,16 @@
+.cardItem {
+  width: 70%;
+  height: 105px;
+  background: #f8f8f8;
+  border-radius: 10px;
+  /* padding: 24px 20px; */
+  color: #78778b;
+
+  /* flex: 1; */
+
+  /* margin: 0px 20px; */
+  padding: 30px;
+  cursor: pointer;
+  /* -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75); */
+  /* box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75); */
+}

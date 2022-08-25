@@ -1,0 +1,11 @@
+.myFarm {
+  flex: 4;
+}
+.top {
+  margin: 20px;
+}
+.teaContainer {
+  flex: 4;
+  margin: 1em 0;
+  display: flex;
+}
