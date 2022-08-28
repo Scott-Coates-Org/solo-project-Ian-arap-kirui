@@ -2,9 +2,22 @@ import styles from "./sidebar.module.css";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import AgricultureOutlinedIcon from "@mui/icons-material/AgricultureOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { logout } from "../../redux/authSlice";
+import { auth } from "../../firebase/client";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logoutHandler = () => {
+    signOut(auth);
+    dispatch(logout(navigate("/login")));
+  };
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebarWrapper}>
@@ -26,6 +39,10 @@ export default function Sidebar() {
             <li className={styles.sidebarListItem}>
               <SettingsOutlinedIcon className={styles.sidebarIcon} />
               Settings
+            </li>
+            <li className={styles.sidebarListItem} onClick={logoutHandler}>
+              <LogoutOutlinedIcon className={styles.sidebarIcon} />
+              Log-out
             </li>
           </ul>
         </div>

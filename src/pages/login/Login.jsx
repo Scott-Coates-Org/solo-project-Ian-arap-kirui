@@ -1,33 +1,34 @@
 import { useEffect } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { signOut } from "firebase/auth";
+// import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/client";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../../redux/authSlice";
+import { login } from "../../redux/authSlice";
 
 import styles from "./login.module.css";
-import Hero from "../../images/Hero-sign-in.png";
+import Hero from "../../image/Hero-sign-in.png";
+import GoogleIcon from "../../image/Google.png";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [signInWithGoogle, user] = useSignInWithGoogle(auth);
+  // const [error, setError] = useState(false);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (user) {
       dispatch(
-        login({
-          displayName: user.user.displayName,
-          email: user.user.email,
-          accessToken: user.user.accessToken,
-        })
+        login(
+          {
+            displayName: user.user.displayName,
+            email: user.user.email,
+            accessToken: user.user.accessToken,
+          },
+          navigate("/")
+        )
       );
     }
   }, [user, dispatch]);
-
-  const logoutHandler = () => {
-    signOut(auth);
-    dispatch(logout());
-  };
 
   return (
     <div className={styles.container}>
@@ -40,13 +41,11 @@ const Login = () => {
           <div className={styles.inputContainer}>
             <input
               type="email"
-              name="Email"
               placeholder="Enter your email"
               className={styles.inputs}
             />
             <input
               type="password"
-              name="Password"
               placeholder="Password"
               className={styles.inputs}
             />
@@ -75,20 +74,10 @@ const Login = () => {
           <div className={styles.bottom}>
             <button
               onClick={() => signInWithGoogle()}
-              className={styles.button}
-            >
-              {/* <img src="/images/googlelogo.png" alt="Google Logo" /> */}
-              Sign in
-            </button>
-            <button
-              onClick={() => signInWithGoogle()}
               className={styles.googleButton}
             >
-              <img src="/images/googlelogo.png" alt="Google Logo" />
+              <img src={GoogleIcon} alt="Google Logo" />
               Sign in with Google
-            </button>
-            <button onClick={logoutHandler} className={styles.button}>
-              Sign Out
             </button>
           </div>
         </div>
