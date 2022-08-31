@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 
 function App() {
   const currentUser = useSelector((state) => state.auth.user);
-  console.log(currentUser);
 
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/login" />;
