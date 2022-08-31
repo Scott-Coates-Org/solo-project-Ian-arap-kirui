@@ -18,17 +18,15 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       dispatch(
-        login(
-          {
-            displayName: user.user.displayName,
-            email: user.user.email,
-            accessToken: user.user.accessToken,
-          },
-          navigate("/")
-        )
+        login({
+          displayName: user.user.displayName,
+          email: user.user.email,
+          accessToken: user.user.accessToken,
+        })
       );
+      navigate("/");
     }
-  }, [user, dispatch]);
+  }, [user, dispatch, navigate]);
 
   return (
     <div className={styles.container}>
