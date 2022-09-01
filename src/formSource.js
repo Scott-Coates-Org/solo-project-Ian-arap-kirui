@@ -10,4 +10,9 @@ export const farmInput = [
     label: "date of picking",
     type: "date",
   },
+  {
+    id: "status",
+    label: "paid or pending",
+    type: "string",
+  },
 ];

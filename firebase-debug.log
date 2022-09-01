@@ -1,0 +1,135 @@
+[debug] [2022-09-01T03:36:28.100Z] ----------------------------------------------------------------------
+[debug] [2022-09-01T03:36:28.103Z] Command:       C:\Program Files\nodejs\node.exe C:\usr\local\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-09-01T03:36:28.103Z] CLI Version:   11.6.0
+[debug] [2022-09-01T03:36:28.104Z] Platform:      win32
+[debug] [2022-09-01T03:36:28.104Z] Node Version:  v16.16.0
+[debug] [2022-09-01T03:36:28.116Z] Time:          Thu Sep 01 2022 06:36:28 GMT+0300 (East Africa Time)
+[debug] [2022-09-01T03:36:28.116Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-09-01T03:36:28.187Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-09-01T03:36:28.187Z] > authorizing via signed-in user (ianarapkirui@gmail.com)
+[debug] [2022-09-01T03:36:28.187Z] [iam] checking project solo-project-b567f for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2022-09-01T03:36:28.191Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/solo-project-b567f:testIamPermissions [none]
+[debug] [2022-09-01T03:36:28.192Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/solo-project-b567f:testIamPermissions x-goog-quota-user=projects/solo-project-b567f
+[debug] [2022-09-01T03:36:28.192Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/solo-project-b567f:testIamPermissions {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2022-09-01T03:36:33.218Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/solo-project-b567f:testIamPermissions 200
+[debug] [2022-09-01T03:36:33.218Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/solo-project-b567f:testIamPermissions {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2022-09-01T03:36:33.221Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/solo-project-b567f [none]
+[debug] [2022-09-01T03:36:35.030Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/solo-project-b567f 200
+[debug] [2022-09-01T03:36:35.031Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/solo-project-b567f {"projectId":"solo-project-b567f","projectNumber":"200469595763","displayName":"solo-project","name":"projects/solo-project-b567f","resources":{"hostingSite":"solo-project-b567f","realtimeDatabaseInstance":"solo-project-b567f-default-rtdb","storageBucket":"solo-project-b567f.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_06e44dd3-8387-48b1-90f2-80d744f827cd"}
+[debug] [2022-09-01T03:36:35.031Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/solo-project-b567f [none]
+[debug] [2022-09-01T03:36:37.439Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/solo-project-b567f 200
+[debug] [2022-09-01T03:36:37.440Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/solo-project-b567f {"projectId":"solo-project-b567f","projectNumber":"200469595763","displayName":"solo-project","name":"projects/solo-project-b567f","resources":{"hostingSite":"solo-project-b567f","realtimeDatabaseInstance":"solo-project-b567f-default-rtdb","storageBucket":"solo-project-b567f.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_06e44dd3-8387-48b1-90f2-80d744f827cd"}
+[info] 
+[info] === Deploying to 'solo-project-b567f'...
+[info] 
+[info] i  deploying database, hosting 
+[info] i  database: checking rules syntax... 
+[debug] [2022-09-01T03:36:37.456Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/solo-project-b567f/locations/-/instances/solo-project-b567f-default-rtdb [none]
+[debug] [2022-09-01T03:36:40.559Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/solo-project-b567f/locations/-/instances/solo-project-b567f-default-rtdb 200
+[debug] [2022-09-01T03:36:40.560Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/solo-project-b567f/locations/-/instances/solo-project-b567f-default-rtdb {"name":"projects/200469595763/locations/us-central1/instances/solo-project-b567f-default-rtdb","project":"projects/200469595763","databaseUrl":"https://solo-project-b567f-default-rtdb.firebaseio.com","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[debug] [2022-09-01T03:36:40.561Z] >>> [apiv2][query] PUT https://solo-project-b567f-default-rtdb.firebaseio.com/.settings/rules.json dryRun=true
+[debug] [2022-09-01T03:36:40.561Z] >>> [apiv2][body] PUT https://solo-project-b567f-default-rtdb.firebaseio.com/.settings/rules.json "{\n  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */\n  \"rules\": {\n    \".read\": false,\n    \".write\": false\n  }\n}"
+[debug] [2022-09-01T03:36:43.290Z] <<< [apiv2][status] PUT https://solo-project-b567f-default-rtdb.firebaseio.com/.settings/rules.json 200
+[debug] [2022-09-01T03:36:43.290Z] <<< [apiv2][body] PUT https://solo-project-b567f-default-rtdb.firebaseio.com/.settings/rules.json {"status":"ok"}
+[info] +  database: rules syntax for database solo-project-b567f-default-rtdb is valid 
+[debug] [2022-09-01T03:36:43.291Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/solo-project-b567f [none]
+[debug] [2022-09-01T03:36:45.256Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/solo-project-b567f 200
+[debug] [2022-09-01T03:36:45.257Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/solo-project-b567f {"projectId":"solo-project-b567f","projectNumber":"200469595763","displayName":"solo-project","name":"projects/solo-project-b567f","resources":{"hostingSite":"solo-project-b567f","realtimeDatabaseInstance":"solo-project-b567f-default-rtdb","storageBucket":"solo-project-b567f.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_06e44dd3-8387-48b1-90f2-80d744f827cd"}
+[debug] [2022-09-01T03:36:45.261Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions [none]
+[debug] [2022-09-01T03:36:45.261Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-09-01T03:36:52.883Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions 200
+[debug] [2022-09-01T03:36:52.883Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions {"name":"projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e","status":"CREATED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[solo-project-b567f]: beginning deploy... 
+[info] i  hosting[solo-project-b567f]: found 8 files in build 
+[debug] [2022-09-01T03:36:52.904Z] [hosting] uploading with 200 concurrency
+[debug] [2022-09-01T03:36:52.913Z] [hosting] hash cache [YnVpbGQ] stored for 8 files
+[debug] [2022-09-01T03:36:52.913Z] [hosting][hash queue][FINAL] {"max":4,"min":3,"avg":3,"active":0,"complete":8,"success":8,"errored":0,"retried":0,"total":8,"elapsed":6}
+[debug] [2022-09-01T03:36:52.914Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e:populateFiles [none]
+[debug] [2022-09-01T03:36:52.914Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e:populateFiles {"files":{"/asset-manifest.json":"b10e2a6d83a052807d0660eef5422dcfe9b5373e4f07d2a8a37efbf6e4dcf4e2","/index.html":"f453a93d7ac8c9c751ecf7118d1b319ef3725d2faf72699bcd5edc780039dcad","/static/css/main.3b53b89a.css":"0e055f7b0055b57055e334ced8e0fd7a440021f3165f004813000938a5cc01fe","/static/css/main.3b53b89a.css.map":"e2c2db0bbd7c148f48718d5fdfff6a380a33f68e406d79af306f61fe7272f18c","/static/js/main.e9058771.js":"0c5a8747c44ae0c65a8e908d15132ca5a79676d28ca288729c4c9a3495e6b647","/static/js/main.e9058771.js.LICENSE.txt":"42f388e1ab6d7eb934758bd13001a5bc27a31ddb574565c15b3b9b0b30e4f066","/static/js/main.e9058771.js.map":"b47658c1a75ed8e944ba99b196c9c1516d3032f9297aa0d6086dfa744d80ad5f","/static/media/Hero-sign-in.26523ff73168e2bc72da.png":"7f04e768667654cc6b8cced99c105b21109274a117720392b068925936f0fe4d"}}
+[debug] [2022-09-01T03:36:56.640Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e:populateFiles 200
+[debug] [2022-09-01T03:36:56.640Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e:populateFiles {"uploadRequiredHashes":["b10e2a6d83a052807d0660eef5422dcfe9b5373e4f07d2a8a37efbf6e4dcf4e2","f453a93d7ac8c9c751ecf7118d1b319ef3725d2faf72699bcd5edc780039dcad","0e055f7b0055b57055e334ced8e0fd7a440021f3165f004813000938a5cc01fe","e2c2db0bbd7c148f48718d5fdfff6a380a33f68e406d79af306f61fe7272f18c","0c5a8747c44ae0c65a8e908d15132ca5a79676d28ca288729c4c9a3495e6b647","b47658c1a75ed8e944ba99b196c9c1516d3032f9297aa0d6086dfa744d80ad5f"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files"}
+[debug] [2022-09-01T03:36:56.647Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/b10e2a6d83a052807d0660eef5422dcfe9b5373e4f07d2a8a37efbf6e4dcf4e2 [none]
+[debug] [2022-09-01T03:36:56.647Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/b10e2a6d83a052807d0660eef5422dcfe9b5373e4f07d2a8a37efbf6e4dcf4e2 [stream]
+[debug] [2022-09-01T03:36:56.651Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/f453a93d7ac8c9c751ecf7118d1b319ef3725d2faf72699bcd5edc780039dcad [none]
+[debug] [2022-09-01T03:36:56.652Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/f453a93d7ac8c9c751ecf7118d1b319ef3725d2faf72699bcd5edc780039dcad [stream]
+[debug] [2022-09-01T03:36:56.655Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/0e055f7b0055b57055e334ced8e0fd7a440021f3165f004813000938a5cc01fe [none]
+[debug] [2022-09-01T03:36:56.655Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/0e055f7b0055b57055e334ced8e0fd7a440021f3165f004813000938a5cc01fe [stream]
+[debug] [2022-09-01T03:36:56.658Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/e2c2db0bbd7c148f48718d5fdfff6a380a33f68e406d79af306f61fe7272f18c [none]
+[debug] [2022-09-01T03:36:56.658Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/e2c2db0bbd7c148f48718d5fdfff6a380a33f68e406d79af306f61fe7272f18c [stream]
+[debug] [2022-09-01T03:36:56.661Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/0c5a8747c44ae0c65a8e908d15132ca5a79676d28ca288729c4c9a3495e6b647 [none]
+[debug] [2022-09-01T03:36:56.661Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/0c5a8747c44ae0c65a8e908d15132ca5a79676d28ca288729c4c9a3495e6b647 [stream]
+[debug] [2022-09-01T03:36:56.664Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/b47658c1a75ed8e944ba99b196c9c1516d3032f9297aa0d6086dfa744d80ad5f [none]
+[debug] [2022-09-01T03:36:56.664Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/b47658c1a75ed8e944ba99b196c9c1516d3032f9297aa0d6086dfa744d80ad5f [stream]
+[debug] [2022-09-01T03:36:56.667Z] [hosting][populate queue][FINAL] {"max":3736,"min":3736,"avg":3736,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":3756}
+[debug] [2022-09-01T03:36:56.668Z] [hosting] uploads queued: 6
+[debug] [2022-09-01T03:37:00.461Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/0e055f7b0055b57055e334ced8e0fd7a440021f3165f004813000938a5cc01fe 200
+[debug] [2022-09-01T03:37:00.461Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/0e055f7b0055b57055e334ced8e0fd7a440021f3165f004813000938a5cc01fe [stream]
+[debug] [2022-09-01T03:37:00.604Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/e2c2db0bbd7c148f48718d5fdfff6a380a33f68e406d79af306f61fe7272f18c 200
+[debug] [2022-09-01T03:37:00.604Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/e2c2db0bbd7c148f48718d5fdfff6a380a33f68e406d79af306f61fe7272f18c [stream]
+[debug] [2022-09-01T03:37:00.903Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/b10e2a6d83a052807d0660eef5422dcfe9b5373e4f07d2a8a37efbf6e4dcf4e2 200
+[debug] [2022-09-01T03:37:00.903Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/b10e2a6d83a052807d0660eef5422dcfe9b5373e4f07d2a8a37efbf6e4dcf4e2 [stream]
+[debug] [2022-09-01T03:37:01.164Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/f453a93d7ac8c9c751ecf7118d1b319ef3725d2faf72699bcd5edc780039dcad 200
+[debug] [2022-09-01T03:37:01.165Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/f453a93d7ac8c9c751ecf7118d1b319ef3725d2faf72699bcd5edc780039dcad [stream]
+[debug] [2022-09-01T03:37:05.373Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/0c5a8747c44ae0c65a8e908d15132ca5a79676d28ca288729c4c9a3495e6b647 200
+[debug] [2022-09-01T03:37:05.374Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/0c5a8747c44ae0c65a8e908d15132ca5a79676d28ca288729c4c9a3495e6b647 [stream]
+[debug] [2022-09-01T03:37:19.892Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/b47658c1a75ed8e944ba99b196c9c1516d3032f9297aa0d6086dfa744d80ad5f 200
+[debug] [2022-09-01T03:37:19.894Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/solo-project-b567f/versions/d53c13399655f61e/files/b47658c1a75ed8e944ba99b196c9c1516d3032f9297aa0d6086dfa744d80ad5f [stream]
+[debug] [2022-09-01T03:37:19.895Z] [hosting][upload queue][FINAL] {"max":23249,"min":3817,"avg":8089.833333333333,"active":0,"complete":6,"success":6,"errored":0,"retried":0,"total":6,"elapsed":23255}
+[info] +  hosting[solo-project-b567f]: file upload complete 
+[debug] [2022-09-01T03:37:19.904Z] [hosting] deploy completed after 27017ms
+[info] i  database: releasing rules... 
+[debug] [2022-09-01T03:37:19.916Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/solo-project-b567f/locations/-/instances/solo-project-b567f-default-rtdb [none]
+[debug] [2022-09-01T03:37:23.534Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/solo-project-b567f/locations/-/instances/solo-project-b567f-default-rtdb 200
+[debug] [2022-09-01T03:37:23.535Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/solo-project-b567f/locations/-/instances/solo-project-b567f-default-rtdb {"name":"projects/200469595763/locations/us-central1/instances/solo-project-b567f-default-rtdb","project":"projects/200469595763","databaseUrl":"https://solo-project-b567f-default-rtdb.firebaseio.com","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[debug] [2022-09-01T03:37:23.537Z] >>> [apiv2][query] PUT https://solo-project-b567f-default-rtdb.firebaseio.com/.settings/rules.json 
+[debug] [2022-09-01T03:37:23.537Z] >>> [apiv2][body] PUT https://solo-project-b567f-default-rtdb.firebaseio.com/.settings/rules.json "{\n  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */\n  \"rules\": {\n    \".read\": false,\n    \".write\": false\n  }\n}"
+[debug] [2022-09-01T03:37:24.300Z] <<< [apiv2][status] PUT https://solo-project-b567f-default-rtdb.firebaseio.com/.settings/rules.json 200
+[debug] [2022-09-01T03:37:24.302Z] <<< [apiv2][body] PUT https://solo-project-b567f-default-rtdb.firebaseio.com/.settings/rules.json {"status":"ok"}
+[info] +  database: rules for database solo-project-b567f-default-rtdb released successfully 
+[debug] [2022-09-01T03:37:24.306Z] [
+  {
+    "config": {
+      "public": "build",
+      "site": "solo-project-b567f",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    "site": "solo-project-b567f",
+    "version": "projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e"
+  }
+]
+[info] i  hosting[solo-project-b567f]: finalizing version... 
+[debug] [2022-09-01T03:37:24.311Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e updateMask=status%2Cconfig
+[debug] [2022-09-01T03:37:24.311Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2022-09-01T03:37:26.780Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e 200
+[debug] [2022-09-01T03:37:26.781Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e {"name":"projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2022-09-01T03:36:51.476390Z","createUser":{"email":"ianarapkirui@gmail.com"},"finalizeTime":"2022-09-01T03:37:25.716304Z","finalizeUser":{"email":"ianarapkirui@gmail.com"}}
+[debug] [2022-09-01T03:37:26.781Z] [hosting] finalized version for solo-project-b567f:[object Object]
+[info] +  hosting[solo-project-b567f]: version finalized 
+[info] i  hosting[solo-project-b567f]: releasing new version... 
+[debug] [2022-09-01T03:37:26.782Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/releases versionName=projects%2F200469595763%2Fsites%2Fsolo-project-b567f%2Fversions%2Fd53c13399655f61e
+[debug] [2022-09-01T03:37:26.782Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/releases {"message":null}
+[debug] [2022-09-01T03:37:35.270Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/releases 200
+[debug] [2022-09-01T03:37:35.271Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/200469595763/sites/solo-project-b567f/releases {"name":"projects/200469595763/sites/solo-project-b567f/releases/1662003453587285","version":{"name":"projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2022-09-01T03:36:51.476390Z","createUser":{"email":"ianarapkirui@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AItbvmnvr1iOLqprV5ONUYxLk4f80-VTqb4vthX2DBrH=mo"},"finalizeTime":"2022-09-01T03:37:25.716304Z","finalizeUser":{"email":"ianarapkirui@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AItbvmnvr1iOLqprV5ONUYxLk4f80-VTqb4vthX2DBrH=mo"}},"type":"DEPLOY","releaseTime":"2022-09-01T03:37:33.587285715Z","releaseUser":{"email":"ianarapkirui@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AItbvmnvr1iOLqprV5ONUYxLk4f80-VTqb4vthX2DBrH=mo"}}
+[debug] [2022-09-01T03:37:35.271Z] [hosting] release: {"name":"projects/200469595763/sites/solo-project-b567f/releases/1662003453587285","version":{"name":"projects/200469595763/sites/solo-project-b567f/versions/d53c13399655f61e","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2022-09-01T03:36:51.476390Z","createUser":{"email":"ianarapkirui@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AItbvmnvr1iOLqprV5ONUYxLk4f80-VTqb4vthX2DBrH=mo"},"finalizeTime":"2022-09-01T03:37:25.716304Z","finalizeUser":{"email":"ianarapkirui@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AItbvmnvr1iOLqprV5ONUYxLk4f80-VTqb4vthX2DBrH=mo"}},"type":"DEPLOY","releaseTime":"2022-09-01T03:37:33.587285715Z","releaseUser":{"email":"ianarapkirui@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/AItbvmnvr1iOLqprV5ONUYxLk4f80-VTqb4vthX2DBrH=mo"}}
+[info] +  hosting[solo-project-b567f]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/solo-project-b567f/overview
+[info] Hosting URL: https://solo-project-b567f.web.app
+[debug] [2022-09-01T03:37:50.968Z] Error: Timed out.
+    at Timeout._onTimeout (C:\usr\local\node_modules\firebase-tools\lib\utils.js:253:49)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+[error] 
+[error] Error: An unexpected error has occurred.

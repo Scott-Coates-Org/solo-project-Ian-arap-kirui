@@ -1,9 +1,30 @@
 import styles from "./widgetLg.module.css";
-// import { useEffect, useState } from "react";
-// import { userRequest } from "../../requestMethods";
-// import { format } from "timeago.js";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../../firebase/client";
+import { useEffect, useState } from "react";
 
 export default function WidgetLg() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    // LISTEN (REALTIME)
+    const unsub = onSnapshot(
+      collection(db, "tea"),
+      (snapShot) => {
+        let list = [];
+        snapShot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
+        });
+        setData(list);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    return () => {
+      unsub();
+    };
+  }, []);
   return (
     <div className={styles.widgetLg}>
       <h3 className={styles.widgetLgTitle}>Latest transactions</h3>
@@ -14,57 +35,20 @@ export default function WidgetLg() {
           <th className={styles.widgetLgTh}>Amount</th>
           <th className={styles.widgetLgTh}>Status</th>
         </tr>
-
-        <tr className={styles.widgetLgTr}>
-          <td className={styles.widgetLgUser}>
-            <span className={styles.widgetLgName}>367 kgs</span>
-          </td>
-          <td className={styles.widgetLgDate}>03/09/2022</td>
-          <td className={styles.widgetLgAmount}>ksh.200</td>
-          <td className={styles.widgetLgStatus}>
-            <button className={styles.widgetLgButton}>paid</button>
-          </td>
-        </tr>
-        <tr className={styles.widgetLgTr}>
-          <td className={styles.widgetLgUser}>
-            <span className={styles.widgetLgName}>367 kgs</span>
-          </td>
-          <td className={styles.widgetLgDate}>03/09/2022</td>
-          <td className={styles.widgetLgAmount}>ksh.200</td>
-          <td className={styles.widgetLgStatus}>
-            <button className={styles.widgetLgButton}>paid</button>
-          </td>
-        </tr>
-        <tr className={styles.widgetLgTr}>
-          <td className={styles.widgetLgUser}>
-            <span className={styles.widgetLgName}>367 kgs</span>
-          </td>
-          <td className={styles.widgetLgDate}>03/09/2022</td>
-          <td className={styles.widgetLgAmount}>ksh.200</td>
-          <td className={styles.widgetLgStatus}>
-            <button className={styles.widgetLgButton}>paid</button>
-          </td>
-        </tr>
-        <tr className={styles.widgetLgTr}>
-          <td className={styles.widgetLgUser}>
-            <span className={styles.widgetLgName}>367 kgs</span>
-          </td>
-          <td className={styles.widgetLgDate}>03/09/2022</td>
-          <td className={styles.widgetLgAmount}>ksh.200</td>
-          <td className={styles.widgetLgStatus}>
-            <button className={styles.widgetLgButton}>paid</button>
-          </td>
-        </tr>
-        <tr className={styles.widgetLgTr}>
-          <td className={styles.widgetLgUser}>
-            <span className={styles.widgetLgName}>367 kgs</span>
-          </td>
-          <td className={styles.widgetLgDate}>03/09/2022</td>
-          <td className={styles.widgetLgAmount}>ksh.200</td>
-          <td className={styles.widgetLgStatus}>
-            <button className={styles.widgetLgButton}>paid</button>
-          </td>
-        </tr>
+        {data.map((item) => (
+          <>
+            <tr className={styles.widgetLgTr} key={item.id}>
+              <td className={styles.widgetLgUser}>
+                <span className={styles.widgetLgName}>{item.kilos} kgs</span>
+              </td>
+              <td className={styles.widgetLgDate}>{item.datePicked}</td>
+              <td className={styles.widgetLgAmount}>ksh.200</td>
+              <td className={styles.widgetLgStatus}>
+                <button className={styles.widgetLgButton}>{item.status}</button>
+              </td>
+            </tr>
+          </>
+        ))}
       </table>
     </div>
   );
