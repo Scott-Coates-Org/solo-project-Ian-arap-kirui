@@ -18,13 +18,15 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       dispatch(
-        login({
-          displayName: user.user.displayName,
-          email: user.user.email,
-          accessToken: user.user.accessToken,
-        })
+        login(
+          {
+            displayName: user.user.displayName,
+            email: user.user.email,
+            accessToken: user.user.accessToken,
+          },
+          navigate("/")
+        )
       );
-      navigate("/");
     }
   }, [user, dispatch, navigate]);
 

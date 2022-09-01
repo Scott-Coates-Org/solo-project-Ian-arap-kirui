@@ -1,4 +1,4 @@
-import styles from "./farmInput.module.css";
+import styles from "./teaInput.module.css";
 import inputStyles from "../../pages/login/login.module.css";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase/client";
@@ -30,7 +30,7 @@ export default function FarmInput() {
     <div className={styles.farmInputWidget}>
       <h3>Tea Entry</h3>
       {farmInput.map((input) => (
-        <div key={input.id}>
+        <div key={input.id} className={styles.inputContainer}>
           <label>{input.label}</label>
           <input
             id={input.id}

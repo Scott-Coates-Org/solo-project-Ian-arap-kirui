@@ -1,7 +1,8 @@
-import FarmInput from "../../components/farmInput/FarmInput";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Transactions from "../../components/transactions/Transactions";
-import WidgetLg from "../../components/widgetLg/WidgetLg";
+import TeaInput from "../../components/teaInput/TeaInput";
+// import Transactions from "../../components/transactions/Transactions";
+import FertiliserInput from "../../components/otherInput/OtherInput";
+import WeedingInput from "../../components/weedingInput/WeedingInput";
 import styles from "./tea.module.css";
 
 export default function Tea() {
@@ -9,12 +10,15 @@ export default function Tea() {
     <>
       <Sidebar />
       <div className={styles.myFarm}>
-        <div className={styles.top}>
+        {/* <div className={styles.top}>
           <Transactions />
-        </div>
+        </div> */}
         <div className={styles.teaContainer}>
-          <FarmInput />
-          <WidgetLg />
+          <TeaInput />
+          <div className={styles.rightContainer}>
+            <FertiliserInput />
+            <WeedingInput />
+          </div>
         </div>
       </div>
     </>

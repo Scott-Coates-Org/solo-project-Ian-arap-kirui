@@ -12,9 +12,13 @@
   gap: 20px;
   text-align: left;
 }
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
 .input {
   margin: 10px 0;
-  padding: 15px;
+  padding: 10px;
   border: 1px solid #f2f2f2;
   border-radius: 5px;
   font-size: 20px;

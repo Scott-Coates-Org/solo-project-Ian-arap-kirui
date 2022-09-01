@@ -5,7 +5,12 @@
   margin: 20px;
 }
 .teaContainer {
-  flex: 4;
   margin: 1em 0;
   display: flex;
+  justify-content: space-evenly;
+}
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }

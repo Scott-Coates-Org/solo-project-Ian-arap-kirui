@@ -42,7 +42,7 @@ export default function WidgetLg() {
                 <span className={styles.widgetLgName}>{item.kilos} kgs</span>
               </td>
               <td className={styles.widgetLgDate}>{item.datePicked}</td>
-              <td className={styles.widgetLgAmount}>ksh.200</td>
+              <td className={styles.widgetLgAmount}>ksh.{item.amount}</td>
               <td className={styles.widgetLgStatus}>
                 <button className={styles.widgetLgButton}>{item.status}</button>
               </td>
