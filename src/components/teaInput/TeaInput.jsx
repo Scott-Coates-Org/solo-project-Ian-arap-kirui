@@ -7,6 +7,7 @@ import { farmInput } from "../../formSource";
 
 export default function FarmInput() {
   const [data, setData] = useState({});
+  const [success, setSuccess] = useState(false);
 
   // Add a new document in collection "tea"
   const handleAdd = async (e) => {
@@ -16,6 +17,7 @@ export default function FarmInput() {
         ...data,
         timeStamp: serverTimestamp(),
       });
+      setSuccess(true);
     } catch (err) {
       console.log(err);
     }
@@ -45,6 +47,7 @@ export default function FarmInput() {
       <button onClick={handleAdd} className={inputStyles.button}>
         Add
       </button>
+      {success && <span>successfully added!</span>}
     </div>
   );
 }
