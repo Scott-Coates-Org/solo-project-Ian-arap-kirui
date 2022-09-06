@@ -36,9 +36,9 @@ const Login = () => {
         <div className={styles.loginContainer}>
           <div className={styles.header}>
             <h3>Welcome Back</h3>
-            <p>Welcome back! Please enter your details</p>
+            <p>Welcome back! Quickly login with Google</p>
           </div>
-          <div className={styles.inputContainer}>
+          {/* <div className={styles.inputContainer}>
             <input
               type="email"
               placeholder="Enter your email"
@@ -70,7 +70,7 @@ const Login = () => {
                 Forgot password
               </a>{" "}
             </p>
-          </div>
+          </div> */}
           <div className={styles.bottom}>
             <button
               onClick={() => signInWithGoogle()}

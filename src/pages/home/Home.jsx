@@ -4,14 +4,18 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import styles from "./home.module.css";
 import { userData } from "../../dummyData";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
-import WidgetSm from "../../components/widgetSm/WidgetSm";
+// import WidgetSm from "../../components/widgetSm/WidgetSm";
 
 export default function Home() {
   return (
     <>
       <Sidebar />
       <div className={styles.home}>
-        <FeaturedInfo />
+        <div className={styles.cards}>
+          <FeaturedInfo type="tea" />
+          <FeaturedInfo type="farm" />
+          <FeaturedInfo type="weeding" />
+        </div>
         <Chart
           data={userData}
           title="Kilos picked"
@@ -19,7 +23,7 @@ export default function Home() {
           dataKey="Kilos Picked"
         />
         <div className={styles.homeWidgets}>
-          <WidgetSm />
+          {/* <WidgetSm /> */}
           <WidgetLg />
         </div>
       </div>

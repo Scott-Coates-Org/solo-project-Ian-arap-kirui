@@ -1,6 +1,6 @@
 import styles from "./otherInput.module.css";
 import inputStyles from "../../pages/login/login.module.css";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase/client";
 import { useState } from "react";
 import { fertiliserInput } from "../../formSource";
@@ -14,6 +14,7 @@ export default function FarmInput() {
     try {
       await addDoc(collection(db, "fertiliser"), {
         ...data,
+        timeStamp: serverTimestamp(),
       });
     } catch (err) {
       console.log(err);

@@ -37,6 +37,10 @@
 .widgetLgDate,
 .widgetLgAmount {
   font-weight: 300;
+  text-align: left;
+}
+.widgetLgStatus {
+  text-align: left;
 }
 
 .widgetLgButton {

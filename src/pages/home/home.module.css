@@ -2,7 +2,11 @@
   flex: 4;
   margin: 1em 0;
 }
-
+.cards {
+  display: flex;
+  margin: 0 1em;
+  gap: 10px;
+}
 .homeWidgets {
   display: flex;
   margin: 20px;
