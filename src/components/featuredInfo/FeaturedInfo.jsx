@@ -4,11 +4,18 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { db } from "../../firebase/client";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 const FeaturedInfo = ({ type }) => {
   const [amount, setAmount] = useState(null);
+  const [cost, setCost] = useState(null);
   const [diff, setDiff] = useState(null);
   let data;
 
@@ -65,6 +72,23 @@ const FeaturedInfo = ({ type }) => {
         ),
       };
       break;
+    case "cost":
+      data = {
+        title: "cost",
+        isMoney: true,
+        query: "cost",
+        link: "See details",
+        icon: (
+          <AccountBalanceWalletOutlinedIcon
+            className="icon"
+            style={{
+              backgroundColor: "rgba(128, 0, 128, 0.2)",
+              color: "purple",
+            }}
+          />
+        ),
+      };
+      break;
     default:
       break;
   }
@@ -87,6 +111,24 @@ const FeaturedInfo = ({ type }) => {
 
       const lastMonthData = await getDocs(lastMonthQuery);
       const prevMonthData = await getDocs(prevMonthQuery);
+      const allDocs = onSnapshot(collection(db, "tea"), (snapShot) => {
+        let list = [];
+        snapShot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
+        });
+        const amounts = list.map((doc) => {
+          return doc.amount;
+        });
+        const values = Object.values(amounts);
+        const sum = values.reduce((accumulator, value) => {
+          return accumulator + value;
+        }, 0);
+
+        setCost(sum);
+        return () => {
+          allDocs();
+        };
+      });
 
       setAmount(lastMonthData.docs.length);
       setDiff(
@@ -103,7 +145,13 @@ const FeaturedInfo = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {data.isMoney && (
+            <>
+              ksh.
+              {cost}
+            </>
+          )}
+          {!data.isMoney && <>{amount}</>}
         </span>
         <span className="link">{data.link}</span>
       </div>

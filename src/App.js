@@ -1,5 +1,3 @@
-// import Counter from "./components/Counter";
-// import logo from "./logo.svg";
 import "./App.css";
 
 import { Routes, Route, Navigate } from "react-router-dom";

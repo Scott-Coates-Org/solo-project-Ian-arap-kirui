@@ -14,6 +14,7 @@ export default function Home() {
           <FeaturedInfo type="tea" />
           <FeaturedInfo type="farm" />
           <FeaturedInfo type="weeding" />
+          <FeaturedInfo type="cost" />
         </div>
         <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
         <div className={styles.homeWidgets}>
