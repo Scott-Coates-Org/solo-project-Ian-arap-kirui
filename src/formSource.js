@@ -29,7 +29,7 @@ export const fertiliserInput = [
     placeholder: "2",
   },
   {
-    id: "fertiliserPrice",
+    id: "amount",
     label: "Fertiliser Price",
     type: "number",
   },
@@ -41,7 +41,7 @@ export const fertiliserInput = [
 ];
 export const weedingInput = [
   {
-    id: "amountPaid",
+    id: "amount",
     label: "Amount paid for weeding",
     type: "number",
   },

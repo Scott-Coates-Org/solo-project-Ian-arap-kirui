@@ -1,29 +1,21 @@
 import "./featuredInfo.css";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { db } from "../../firebase/client";
-import {
-  collection,
-  getDocs,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 const FeaturedInfo = ({ type }) => {
-  const [amount, setAmount] = useState(null);
   const [cost, setCost] = useState(null);
-  const [diff, setDiff] = useState(null);
+  const [kilos, setKilos] = useState(null);
   let data;
 
   switch (type) {
     case "tea":
       data = {
-        title: "Total tea entries",
-        isMoney: false,
+        title: "Total kilos",
+        isKg: true,
         query: "tea",
         link: "See all Tea",
         icon: (
@@ -40,7 +32,7 @@ const FeaturedInfo = ({ type }) => {
     case "farm":
       data = {
         title: "Fertiliser application(s)",
-        isMoney: false,
+        isMoney: true,
         query: "fertiliser",
         link: "View all applications",
         icon: (
@@ -58,7 +50,7 @@ const FeaturedInfo = ({ type }) => {
     case "weeding":
       data = {
         title: "Weeding",
-        isMoney: false,
+        isMoney: true,
         query: "weeding",
         link: "See details",
         icon: (
@@ -76,7 +68,7 @@ const FeaturedInfo = ({ type }) => {
       data = {
         title: "cost",
         isMoney: true,
-        query: "cost",
+        query: "tea",
         link: "See details",
         icon: (
           <AccountBalanceWalletOutlinedIcon
@@ -94,48 +86,37 @@ const FeaturedInfo = ({ type }) => {
   }
   useEffect(() => {
     const fetchData = async () => {
-      const today = new Date();
-      const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-      const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
-
-      const lastMonthQuery = query(
-        collection(db, data.query),
-        where("timeStamp", "<=", today),
-        where("timeStamp", ">", lastMonth)
-      );
-      const prevMonthQuery = query(
-        collection(db, data.query),
-        where("timeStamp", "<=", lastMonth),
-        where("timeStamp", ">", prevMonth)
-      );
-
-      const lastMonthData = await getDocs(lastMonthQuery);
-      const prevMonthData = await getDocs(prevMonthQuery);
-      const allDocs = onSnapshot(collection(db, "tea"), (snapShot) => {
+      //realtime tea collection docs
+      const allDocs = onSnapshot(collection(db, data.query), (snapShot) => {
         let list = [];
         snapShot.docs.forEach((doc) => {
           list.push({ id: doc.id, ...doc.data() });
         });
+
+        //calculating total amount
         const amounts = list.map((doc) => {
-          return doc.amount;
+          return parseInt(doc.amount);
         });
+
         const values = Object.values(amounts);
         const sum = values.reduce((accumulator, value) => {
           return accumulator + value;
         }, 0);
+        //calculating total kilos
+        const totalKilos = list.map((doc) => {
+          return parseInt(doc.kilos);
+        });
+        const kgs = Object.values(totalKilos);
+        const sumKgs = kgs.reduce((accumulator, value) => {
+          return accumulator + value;
+        }, 0);
 
         setCost(sum);
+        setKilos(sumKgs);
         return () => {
           allDocs();
         };
       });
-
-      setAmount(lastMonthData.docs.length);
-      setDiff(
-        ((lastMonthData.docs.length - prevMonthData.docs.index.length) /
-          prevMonthData.docs.length) *
-          100
-      );
     };
     fetchData();
   }, [data.query]);
@@ -145,21 +126,21 @@ const FeaturedInfo = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
+          {data.isKg && <>{kilos}kgs</>}
           {data.isMoney && (
             <>
               ksh.
               {cost}
             </>
           )}
-          {!data.isMoney && <>{amount}</>}
         </span>
         <span className="link">{data.link}</span>
       </div>
       <div className="right">
-        <div className="percentage positive">
+        {/* <div className="percentage positive">
           <KeyboardArrowUpIcon />
           {diff} %
-        </div>
+        </div> */}
         {data.icon}
       </div>
     </div>

@@ -7,6 +7,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { useEffect } from "react";
+import { collection, onSnapshot, where } from "firebase/firestore";
+import { db } from "../../firebase/client";
 
 const data = [
   { name: "January", Total: 1200 },
@@ -18,6 +21,24 @@ const data = [
 ];
 
 const Chart = ({ aspect, title }) => {
+  useEffect(() => {
+    const fetchChartData = async () => {
+      const teaDocs = onSnapshot(collection(db, "tea"), where(), (snapshot) => {
+        let list = [];
+        snapshot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
+        });
+        //calculate total per month
+
+        return () => {
+          teaDocs();
+        };
+      });
+    };
+
+    fetchChartData();
+  }, []);
+
   return (
     <div className="chart">
       <div className="title">{title}</div>
