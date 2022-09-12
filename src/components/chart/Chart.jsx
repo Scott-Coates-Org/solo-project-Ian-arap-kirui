@@ -10,32 +10,47 @@ import {
 import { useEffect } from "react";
 import { collection, onSnapshot, where } from "firebase/firestore";
 import { db } from "../../firebase/client";
-
-const data = [
-  { name: "January", Total: 1200 },
-  { name: "February", Total: 2100 },
-  { name: "March", Total: 800 },
-  { name: "April", Total: 1600 },
-  { name: "May", Total: 900 },
-  { name: "June", Total: 1700 },
-];
+import moment from "moment/moment";
+import { useState } from "react";
 
 const Chart = ({ aspect, title }) => {
+  const [data, setData] = useState({});
   useEffect(() => {
     const fetchChartData = async () => {
-      const teaDocs = onSnapshot(collection(db, "tea"), where(), (snapshot) => {
+      const teaDocs = onSnapshot(collection(db, "tea"), (snapshot) => {
         let list = [];
         snapshot.docs.forEach((doc) => {
           list.push({ id: doc.id, ...doc.data() });
         });
         //calculate total per month
 
+        const monthData = list.map((x) => ({
+          ...x,
+          total: Number(x.amount),
+        }));
+
+        const mapDayToMonth = monthData.map((x) => ({
+          ...x,
+          month: moment.months(new Date(x.datePicked).getMonth()),
+        }));
+
+        const sumPerMonth = mapDayToMonth.reduce((acc, cur) => {
+          acc[cur.month] = acc[cur.month] + cur.total || cur.total;
+
+          return acc;
+        }, {});
+        const result = Object.keys(sumPerMonth).map((e) => ({
+          month: e,
+          total: sumPerMonth[e],
+        }));
+
+        setData(result);
+        console.log(result);
         return () => {
           teaDocs();
         };
       });
     };
-
     fetchChartData();
   }, []);
 
@@ -55,12 +70,12 @@ const Chart = ({ aspect, title }) => {
               <stop offset="95%" stopColor="#c8ee44" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <XAxis dataKey="name" stroke="gray" />
+          <XAxis dataKey="month" stroke="gray" />
           <CartesianGrid strokeDasharray="3 3" className="chartGrid" />
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="Total"
+            dataKey="total"
             stroke="#c8ee44"
             fillOpacity={1}
             fill="url(#total)"
