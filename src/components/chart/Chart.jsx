@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useEffect } from "react";
-import { collection, onSnapshot, where } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase/client";
 import moment from "moment/moment";
 import { useState } from "react";
