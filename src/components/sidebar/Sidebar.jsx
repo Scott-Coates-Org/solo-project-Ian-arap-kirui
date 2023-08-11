@@ -29,13 +29,13 @@ export default function Sidebar() {
             <Link to="/" className="link">
               <li className={`${styles.sidebarListItem} ${styles.active}`}>
                 <HomeOutlinedIcon className={styles.sidebarIcon} />
-                Dashboard
+                <p className={styles.iconTxt}>Dashboard</p>
               </li>
             </Link>
             <Link to="/my-farm" className="link">
               <li className={styles.sidebarListItem}>
                 <AgricultureOutlinedIcon className={styles.sidebarIcon} />
-                My Farm
+                <p className={styles.iconTxt}> My Farm</p>
               </li>
             </Link>
             {/* <li className={styles.sidebarListItem}>
@@ -48,7 +48,7 @@ export default function Sidebar() {
               style={{ marginTop: "20em" }}
             >
               <LogoutOutlinedIcon className={styles.sidebarIcon} />
-              Log-out
+              <p className={styles.iconTxt}> Log-out</p>
             </li>
           </ul>
         </div>

@@ -62,3 +62,9 @@
   background-color: #ebf1fe;
   color: #2a7ade;
 }
+
+@media only screen and (min-width: 320px) {
+  .widgetLg {
+    padding: 5px;
+  }
+}

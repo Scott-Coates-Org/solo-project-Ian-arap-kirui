@@ -12,3 +12,23 @@
   display: flex;
   margin: 20px;
 }
+
+/* small devices */
+
+@media only screen and (min-width: 320px) {
+  .home {
+    width: 80%;
+  }
+
+  .cards {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+/* tablets */
+
+@media only screen and (min-width: 665px) {
+  .cards {
+    flex-wrap: nowrap;
+  }
+}

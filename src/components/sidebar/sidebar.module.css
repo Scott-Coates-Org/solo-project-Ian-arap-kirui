@@ -49,3 +49,28 @@
   height: 20px;
   margin: 0 10px;
 }
+
+/* small screens */
+@media only screen and (max-width: 768px) and (min-width: 320px) {
+  .sidebar {
+    width: 20%;
+  }
+
+  .sidebarWrapper {
+    padding: 15px;
+    height: 100%;
+  }
+
+  .sidebarList {
+    padding: 0;
+  }
+  .sidebarListItem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .iconTxt {
+    display: none;
+  }
+}
