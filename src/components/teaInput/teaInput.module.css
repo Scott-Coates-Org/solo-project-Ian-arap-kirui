@@ -11,6 +11,8 @@
   flex-direction: column;
   gap: 20px;
   text-align: left;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
 }
 .inputContainer {
   display: flex;
@@ -22,4 +24,10 @@
   border: 1px solid #f2f2f2;
   border-radius: 5px;
   font-size: 20px;
+}
+@media only screen and (max-width: 768px) and (min-width: 320px) {
+  .farmInputWidget {
+    width: 70%;
+    margin-bottom: 20px;
+  }
 }
