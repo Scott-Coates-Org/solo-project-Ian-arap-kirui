@@ -5,6 +5,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { db } from "../../firebase/client";
 import { collection, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const FeaturedInfo = ({ type }) => {
   const [cost, setCost] = useState(null);
@@ -18,6 +19,7 @@ const FeaturedInfo = ({ type }) => {
         isKg: true,
         query: "tea",
         link: "See all Tea",
+        to: "/transactions",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -35,6 +37,7 @@ const FeaturedInfo = ({ type }) => {
         isMoney: true,
         query: "fertiliser",
         link: "View all applications",
+        to: "/transactions",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -53,6 +56,7 @@ const FeaturedInfo = ({ type }) => {
         isMoney: true,
         query: "weeding",
         link: "See details",
+        to: "/transactions",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -70,6 +74,7 @@ const FeaturedInfo = ({ type }) => {
         isMoney: true,
         query: "tea",
         link: "See details",
+        to: "/transactions",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -134,7 +139,9 @@ const FeaturedInfo = ({ type }) => {
             </>
           )}
         </span>
-        <span className="link">{data.link}</span>
+        <Link to={data.to}>
+          <span className="link">{data.link}</span>
+        </Link>
       </div>
       <div className="right">
         {/* <div className="percentage positive">

@@ -15,43 +15,47 @@ import { useState } from "react";
 
 const Chart = ({ aspect, title }) => {
   const [data, setData] = useState({});
-  useEffect(() => {
-    const fetchChartData = async () => {
-      const teaDocs = onSnapshot(collection(db, "tea"), (snapshot) => {
-        let list = [];
-        snapshot.docs.forEach((doc) => {
-          list.push({ id: doc.id, ...doc.data() });
+  try {
+    useEffect(() => {
+      const fetchChartData = async () => {
+        const teaDocs = onSnapshot(collection(db, "tea"), (snapshot) => {
+          let list = [];
+          snapshot.docs.forEach((doc) => {
+            list.push({ id: doc.id, ...doc.data() });
+          });
+          //calculate total per month
+
+          const monthData = list.map((x) => ({
+            ...x,
+            total: Number(x.amount),
+          }));
+
+          const mapDayToMonth = monthData.map((x) => ({
+            ...x,
+            month: moment.months(new Date(x.datePicked).getMonth()),
+          }));
+
+          const sumPerMonth = mapDayToMonth.reduce((acc, cur) => {
+            acc[cur.month] = acc[cur.month] + cur.total || cur.total;
+
+            return acc;
+          }, {});
+          const result = Object.keys(sumPerMonth).map((e) => ({
+            month: e,
+            total: sumPerMonth[e],
+          }));
+
+          setData(result);
+          return () => {
+            teaDocs();
+          };
         });
-        //calculate total per month
-
-        const monthData = list.map((x) => ({
-          ...x,
-          total: Number(x.amount),
-        }));
-
-        const mapDayToMonth = monthData.map((x) => ({
-          ...x,
-          month: moment.months(new Date(x.datePicked).getMonth()),
-        }));
-
-        const sumPerMonth = mapDayToMonth.reduce((acc, cur) => {
-          acc[cur.month] = acc[cur.month] + cur.total || cur.total;
-
-          return acc;
-        }, {});
-        const result = Object.keys(sumPerMonth).map((e) => ({
-          month: e,
-          total: sumPerMonth[e],
-        }));
-
-        setData(result);
-        return () => {
-          teaDocs();
-        };
-      });
-    };
-    fetchChartData();
-  }, []);
+      };
+      fetchChartData();
+    }, []);
+  } catch (error) {
+    console.log(error);
+  }
 
   return (
     <div className="chart">
