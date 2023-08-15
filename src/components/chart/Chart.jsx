@@ -45,7 +45,6 @@ const Chart = ({ aspect, title }) => {
         }));
 
         setData(result);
-        console.log(result);
         return () => {
           teaDocs();
         };
