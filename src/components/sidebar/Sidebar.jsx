@@ -26,17 +26,16 @@ export default function Sidebar() {
           <h3 className={styles.sidebarTitle}>Farm Wallet</h3>
           <ul className={styles.sidebarList}>
             <span>Hello, {userName}</span>
-            <Link to="/" className="link">
-              <li className={`${styles.sidebarListItem} ${styles.active}`}>
-                <HomeOutlinedIcon className={styles.sidebarIcon} />
-                <p className={styles.iconTxt}>Dashboard</p>
-              </li>
+            <Link
+              to="/"
+              className={`${styles.sidebarListItem} ${styles.active}`}
+            >
+              <HomeOutlinedIcon className={styles.sidebarIcon} />
+              <p className={styles.iconTxt}>Dashboard</p>
             </Link>
-            <Link to="/my-farm" className="link">
-              <li className={styles.sidebarListItem}>
-                <AgricultureOutlinedIcon className={styles.sidebarIcon} />
-                <p className={styles.iconTxt}> My Farm</p>
-              </li>
+            <Link to="/my-farm" className={`${styles.sidebarListItem} `}>
+              <AgricultureOutlinedIcon className={styles.sidebarIcon} />
+              <p className={styles.iconTxt}> My Farm</p>
             </Link>
             {/* <li className={styles.sidebarListItem}>
               <SettingsOutlinedIcon className={styles.sidebarIcon} />

@@ -15,26 +15,28 @@ function App() {
   return (
     <>
       <div className="App">
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route
-            exact
-            path="/"
-            element={
-              <RequireAuth>
-                <Home />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/my-farm"
-            element={
-              <RequireAuth>
-                <Tea />
-              </RequireAuth>
-            }
-          />
-        </Routes>
+        <div className="appContainer">
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route
+              exact
+              path="/"
+              element={
+                <RequireAuth>
+                  <Home />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/my-farm"
+              element={
+                <RequireAuth>
+                  <Tea />
+                </RequireAuth>
+              }
+            />
+          </Routes>
+        </div>
       </div>
     </>
   );
