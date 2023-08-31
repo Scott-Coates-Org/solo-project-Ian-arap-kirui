@@ -6,6 +6,10 @@
   position: sticky;
   top: 0;
 }
+.logo {
+  object-fit: contain;
+  width: 25px;
+}
 
 .sidebarWrapper {
   padding: 20px;
@@ -18,8 +22,11 @@
 }
 
 .sidebarTitle {
-  font-size: 13px;
-  color: rgb(187, 186, 186);
+  font-size: 20px;
+  color: #196d3a;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .sidebarList {
@@ -60,6 +67,15 @@
   .sidebarWrapper {
     padding: 15px;
     height: 100%;
+  }
+  .sidebarTitle {
+    justify-content: center;
+  }
+  .sidebarTitle > img {
+    width: 30px;
+  }
+  .sidebarTitle > p {
+    display: none;
   }
 
   .sidebarList {

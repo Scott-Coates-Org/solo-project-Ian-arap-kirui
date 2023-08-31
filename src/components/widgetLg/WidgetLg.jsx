@@ -1,35 +1,6 @@
 import styles from "./widgetLg.module.css";
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../../firebase/client";
-import { useEffect, useState } from "react";
 
-export default function WidgetLg() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    // LISTEN (REALTIME)
-    const unsub = onSnapshot(
-      collection(db, "tea"),
-      (snapShot) => {
-        let list = [];
-        snapShot.docs.forEach((doc) => {
-          list.push({ id: doc.id, ...doc.data() });
-        });
-
-        setData(
-          list.sort((a, b) => new Date(b.datePicked) - new Date(a.datePicked))
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-
-    return () => {
-      unsub();
-    };
-  }, []);
-
+export default function WidgetLg({ data }) {
   return (
     <div className={styles.widgetLg}>
       <h3 className={styles.widgetLgTitle}>Latest transactions</h3>

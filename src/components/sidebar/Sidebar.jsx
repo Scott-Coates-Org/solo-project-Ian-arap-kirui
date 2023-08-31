@@ -9,6 +9,7 @@ import { logout } from "../../redux/authSlice";
 import { auth } from "../../firebase/client";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../Icon.png";
 
 export default function Sidebar() {
   const dispatch = useDispatch();
@@ -23,7 +24,13 @@ export default function Sidebar() {
     <div className={styles.sidebar}>
       <div className={styles.sidebarWrapper}>
         <div className={styles.sidebarMenu}>
-          <h3 className={styles.sidebarTitle}>Farm Wallet</h3>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <h3 className={styles.sidebarTitle}>
+              {" "}
+              <img src={Logo} alt="logo" className={styles.logo} />
+              <p>Farm Wallet</p>
+            </h3>
+          </Link>
           <ul className={styles.sidebarList}>
             <span>Hello, {userName}</span>
             <Link
@@ -39,7 +46,7 @@ export default function Sidebar() {
             </Link>
             <Link to="/transactions" className={`${styles.sidebarListItem} `}>
               <ReceiptIcon className={styles.sidebarIcon} />
-              Transactions
+              <p className={styles.iconTxt}> Transactions</p>
             </Link>
             <li
               className={styles.sidebarListItem}
