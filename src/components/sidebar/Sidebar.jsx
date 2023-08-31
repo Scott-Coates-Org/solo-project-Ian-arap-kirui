@@ -1,7 +1,7 @@
 import styles from "./sidebar.module.css";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import AgricultureOutlinedIcon from "@mui/icons-material/AgricultureOutlined";
-// import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
@@ -37,10 +37,10 @@ export default function Sidebar() {
               <AgricultureOutlinedIcon className={styles.sidebarIcon} />
               <p className={styles.iconTxt}> My Farm</p>
             </Link>
-            {/* <li className={styles.sidebarListItem}>
-              <SettingsOutlinedIcon className={styles.sidebarIcon} />
-              Settings
-            </li> */}
+            <Link to="/transactions" className={`${styles.sidebarListItem} `}>
+              <ReceiptIcon className={styles.sidebarIcon} />
+              Transactions
+            </Link>
             <li
               className={styles.sidebarListItem}
               onClick={logoutHandler}

@@ -5,33 +5,30 @@ import { useEffect, useState } from "react";
 
 export default function WidgetLg() {
   const [data, setData] = useState([]);
-  try {
-    useEffect(() => {
-      // LISTEN (REALTIME)
-      const unsub = onSnapshot(
-        collection(db, "tea"),
-        (snapShot) => {
-          let list = [];
-          snapShot.docs.forEach((doc) => {
-            list.push({ id: doc.id, ...doc.data() });
-          });
 
-          setData(
-            list.sort((a, b) => new Date(b.datePicked) - new Date(a.datePicked))
-          );
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+  useEffect(() => {
+    // LISTEN (REALTIME)
+    const unsub = onSnapshot(
+      collection(db, "tea"),
+      (snapShot) => {
+        let list = [];
+        snapShot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
+        });
 
-      return () => {
-        unsub();
-      };
-    }, []);
-  } catch (error) {
-    console.log(error);
-  }
+        setData(
+          list.sort((a, b) => new Date(b.datePicked) - new Date(a.datePicked))
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    return () => {
+      unsub();
+    };
+  }, []);
 
   return (
     <div className={styles.widgetLg}>
